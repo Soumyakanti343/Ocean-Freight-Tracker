@@ -309,7 +309,7 @@ elif page == 'Email Updates':
         with st.expander('Processing history'): st.dataframe(logs,use_container_width=True,hide_index=True)
 
 st.divider()
-st.caption('Prototype note: rates and shipment changes are saved locally in SQLite. Demo credentials are for evaluation only; change them before any real deployment.')
+# st.caption('Prototype note: rates and shipment changes are saved locally in SQLite. Demo credentials are for evaluation only; change them before any real deployment.')
 
 
 
