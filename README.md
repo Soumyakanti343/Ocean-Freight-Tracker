@@ -1,40 +1,100 @@
-# Ocean Freight Rate & Shipment Tracker
+# 🚢 Ocean Freight Rate & Shipment Tracker
 
-A Streamlit + SQLite prototype for carrier rate comparison, shipment status tracking, invoice checking, and plain-text email updates.
+**DIGITIZE · OPTIMIZE · DEMOCRATIZE**
 
-## Features
-- Login with Admin and User roles; passwords are stored as salted PBKDF2-HMAC-SHA256 hashes.
-- Rate Search by origin, destination, and container size; cheapest option highlighted.
-- Shipment Tracker with add/search, automatic overdue status, and Admin status updates.
-- Invoice Checker for single invoices or CSV uploads.
-- Email Updates parser for the supplied sample inbox; updates rates and shipment statuses, logs processed emails, and skips incomplete/irrelevant messages.
-- Overview dashboard with shipment status chart.
+An interactive web application built with Python and Streamlit to simplify ocean freight rate comparison, shipment tracking, invoice verification, and email-based logistics updates.
 
-## Run locally (Windows PowerShell)
-```powershell
-cd ocean_freight_tracker
-py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-streamlit run app.py
-```
+##  Overview
 
-If `py -3.12` is not available, use an installed supported Python version (3.10–3.12 recommended).
+Ocean Freight Rate & Shipment Tracker is designed to make freight management easier by bringing essential logistics operations into a single dashboard.
 
-## Demo accounts
-- Admin: `admin` / `Admin@123`
-- User: `user` / `User@123`
+The application helps users compare carrier rates, monitor shipment progress, identify potential invoice overcharges, and process email updates to keep shipment information organized.
 
-These accounts are for demonstration only. The prototype uses a local SQLite database (`ocean_freight.db`) created automatically on first run. Delete that database to reset the app and reload the original CSV data.
+##  Features
 
-## Data files
-- `data/carrier_rates.csv`
-- `data/sample_shipments.csv`
-- `data/sample_emails.txt`
+###  1. Overview Dashboard
+- View key shipment and freight statistics.
+- Monitor shipment statuses.
+- Explore freight rate information.
+- Access important information through a centralized dashboard.
 
-## Notes / assumptions
-- Shipment status is `Delivered` if a delivery date exists, otherwise an explicit email/Admin override is honored; without an override, an overdue expected-arrival date means `Delayed`, otherwise `In Transit`.
-- Invoice checks compare the invoice to the current matching rate for the same carrier, route, and container size. A missing matching rate is flagged instead of guessing.
-- Email parsing uses deterministic patterns and sender-domain mapping; incomplete messages are skipped for manual review. The parser records email hashes to avoid applying the same email twice.
-- This is a demo prototype, not a production shipping or authentication system.
+###  2. Freight Rate Search
+- Search and compare freight rates from different carriers.
+- Filter available rates based on shipment requirements.
+- Identify the lowest available freight rate.
+
+###  3. Shipment Tracker
+- Search and view shipment information.
+- Add new shipment records.
+- Monitor shipment statuses, including:
+  - In Transit
+  - Delivered
+  - Delayed
+- Allow administrators to update shipment status.
+
+###  4. Invoice Checker
+- Compare invoice charges against stored carrier rates.
+- Identify potential overcharges.
+- Upload CSV files for bulk invoice comparison.
+
+###  5. Email Updates
+- Process sample or uploaded email messages.
+- Extract relevant freight rate and shipment information.
+- Avoid processing duplicate emails using message hashes.
+- Update relevant rate and shipment records.
+- Maintain an email processing log.
+
+###  6. Authentication
+- Login system with user roles.
+- Separate administrator and regular-user access.
+- Role-based access to selected application features.
+
+###  7. Interactive User Interface
+- Modern ocean-blue and teal theme.
+- Custom styling using Streamlit and CSS.
+- Interactive buttons, forms, metrics, and tables.
+- Responsive layout for different screen sizes.
+
+##  Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Core application logic |
+| Streamlit | Interactive web application |
+| Pandas | Data processing and analysis |
+| SQLite | Database and persistent local data storage |
+| HTML & CSS | Custom user interface styling |
+| CSV | Freight rates, shipment data, and bulk invoice input |
+
+##  Project Structure
+
+```text
+ocean-freight-tracker/
+│
+├── app.py
+├── style.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── database/
+│   ├── __init__.py
+│   └── db.py
+│
+├── modules/
+│   ├── __init__.py
+│   ├── authentication.py
+│   ├── dashboard.py
+│   ├── rate_search.py
+│   ├── shipment_tracker.py
+│   ├── invoice_checker.py
+│   └── email_updates.py
+│
+├── utils/
+│   ├── __init__.py
+│   └── helpers.py
+│
+└── data/
+    ├── carrier_rates.csv
+    ├── sample_shipments.csv
+    └── sample_emails.txt
