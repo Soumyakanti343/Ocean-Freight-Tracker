@@ -60,7 +60,7 @@ with st.sidebar:
         ]
     )
 
-    if st.button('Log out', use_container_width=True):
+    if st.button('Log out', width = "stretch"):
         st.session_state.auth_user = None
         st.rerun()
 
