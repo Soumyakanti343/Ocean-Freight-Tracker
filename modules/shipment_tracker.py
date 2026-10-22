@@ -39,7 +39,7 @@ def render_shipment_tracker(shipments, rates, user):
                 'status'
             ]
         ],
-        use_container_width=True,
+        width = "stretch",    # use_container_width=True,
         hide_index=True
     )
 
