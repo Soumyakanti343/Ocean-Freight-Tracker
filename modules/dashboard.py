@@ -52,7 +52,7 @@ def render_dashboard(shipments, rates):
                 'status'
             ]
         ],
-        use_container_width=True,
+        width = "stretch",    # use_container_width=True,
         hide_index=True
     )
 
