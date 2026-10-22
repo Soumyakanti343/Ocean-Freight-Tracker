@@ -173,7 +173,7 @@ def render_invoice_checker(shipments, rates):
 
                 st.dataframe(
                     pd.DataFrame(results),
-                    use_container_width=True,
+                    width = "stretch",    # use_container_width=True,
                     hide_index=True
                 )
 
