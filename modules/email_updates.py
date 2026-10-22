@@ -479,7 +479,7 @@ def render_email_updates(rates):
     if 'email_results' in st.session_state:
         st.dataframe(
             st.session_state['email_results'],
-            use_container_width=True,
+            width = "stretch",    # use_container_width=True,
             hide_index=True
         )
 
@@ -496,7 +496,7 @@ def render_email_updates(rates):
         with st.expander('Processing history'):
             st.dataframe(
                 logs,
-                use_container_width=True,
+                width = "stretch",    # use_container_width=True,
                 hide_index=True
             )
 
