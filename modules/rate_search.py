@@ -76,7 +76,7 @@ def render_rate_search(rates):
                     'Transit (days)'
                 ]
             ],
-            use_container_width=True,
+            width = "stretch",    # use_container_width=True,
             hide_index=True
         )
 
